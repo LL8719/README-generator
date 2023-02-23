@@ -2,7 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// TODO: Create an array of questions for user input
+//  array of questions for user input
 const questions = [
 	{
 		type: 'input',
@@ -15,11 +15,19 @@ const questions = [
 		message: 'Provide a brief description of the project:',
 	},
 	{
-		type: 'input',
-		name: 'table of contents',
-		message: 'Pleade provide a table of contents for the project:',
+		type: 'checkbox',
+		name: 'contents',
+		message: 'What sections would you like to add to Table of contents?',
+		choices: [
+			'- [Description](#description)',
+			'- [Installation](#installation)',
+			'- [Usage](#usage)',
+			'- [License](#license)',
+			'- [Contributing](#contributing)',
+			'- [Test](#test)',
+			'- [Questions](#questions)',
+		],
 	},
-
 	{
 		type: 'input',
 		name: 'installation',
@@ -44,7 +52,7 @@ const questions = [
 	{
 		type: 'input',
 		name: 'test',
-		message: 'What test have you written for the project',
+		message: 'What test have you written for the project?',
 	},
 	{
 		type: 'input',
@@ -53,11 +61,68 @@ const questions = [
 	},
 ];
 
-// TODO: Create a function to write README file
-function writeToFile() {}
+// function to write README file
+function writeToFile() {
+	inquirer
+
+		.prompt(questions)
+
+		.then((data) => {
+			const filename = 'README.md';
+
+			const content = `
+# ${data.title}
+
+## Description
+
+${data.description}
+
+## Table of Contents (Optional)
+
+
+${data.contents}
+
+## <a href="Installation">Installation</a>
+
+${data.installation}
+
+## Usage
+
+<a href="Usage">${data.usage}</a>
+
+## License
+
+<a href="License">${data.license}</a>
+
+## Contributing
+
+<a href="Contributing">${data.contributing}</a>
+
+## Tests
+
+<a href="Tests">${data.tests}</a>
+
+## Questions
+
+<a href="Questions">${data.questions}</a>
+`;
+			fs.writeFile(filename, content, (err) => {
+				if (err) {
+					console.error(err);
+				} else {
+					console.log(`README file created: ${filename}`);
+				}
+			});
+		})
+		.catch((error) => {
+			console.error(error);
+		});
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+	writeToFile();
+}
 
 // Function call to initialize app
 init();
