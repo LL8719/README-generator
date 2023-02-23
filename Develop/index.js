@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown');
 
 //  array of questions for user input
 const questions = [
@@ -51,13 +52,23 @@ const questions = [
 	},
 	{
 		type: 'input',
-		name: 'test',
+		name: 'tests',
 		message: 'What test have you written for the project?',
 	},
 	{
 		type: 'input',
 		name: 'questions',
 		message: 'What should someone do if they have questions about the project?',
+	},
+	{
+		type: 'input',
+		name: 'GitHub',
+		message: 'Enter your GitHub username for contact info',
+	},
+	{
+		type: 'input',
+		name: 'email',
+		message: 'Enter your email for contact info',
 	},
 ];
 
@@ -86,25 +97,31 @@ ${data.contents}
 
 ${data.installation}
 
-## Usage
+## <a href="Usage">Usage</a>
 
-<a href="Usage">${data.usage}</a>
+${data.usage}
 
-## License
+## <a href="License">License</a>
 
-<a href="License">${data.license}</a>
+${data.license}
 
-## Contributing
+## <a href="Contributing">Contributing</a>
 
-<a href="Contributing">${data.contributing}</a>
+${data.contributing}
 
-## Tests
+## <a href="Tests">Tests</a>
 
-<a href="Tests">${data.tests}</a>
+${data.tests}
 
-## Questions
+## <a href="Questions">Questions</a>
 
-<a href="Questions">${data.questions}</a>
+${data.questions}
+### Use the following links to contact me
+
+[GitHub Profile](https://github.com/${data.GitHub}/).
+
+[:envelope_with_arrow:](${data.email}).
+
 `;
 			fs.writeFile(filename, content, (err) => {
 				if (err) {
@@ -121,7 +138,7 @@ ${data.installation}
 
 // TODO: Create a function to initialize app
 function init() {
-	writeToFile();
+	// writeToFile();
 }
 
 // Function call to initialize app
