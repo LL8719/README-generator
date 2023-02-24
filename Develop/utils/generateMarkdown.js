@@ -42,12 +42,6 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-	// 	const lic	const licenseBadge = renderLicenseBadge(license);
-	// enseLink = renderLicenseLink(license);
-	// 	const licenseSection = renderLicenseSection(license);
-	// 	return `# ${licenseBadge}
-	//   This project is licensed under the ${data.license} license. ${licenseLink}
-	// `;
 	const content = `
 # ${data.title}
 
