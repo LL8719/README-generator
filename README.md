@@ -14,7 +14,13 @@ This is a command line application that dynamically generates a professional REA
 
 ## Table of Contents (Optional)
 
-- [Description](#description),- [Installation](#installation),- [Usage](#usage),- [License](#license),- [Contributing](#contributing),- [Test](#test),- [Questions](#questions)
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributing](#contributing)
+- [Test](#test)
+- [Questions](#questions)
 
 ## <a href="Installation">Installation</a>
 

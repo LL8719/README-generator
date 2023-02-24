@@ -60,7 +60,7 @@ ${renderLicenseSection(data.license)}
 ${data.description}
 
 ## Table of Contents (Optional)
-${data.contents}
+${data.contents.join('\n')}
 
 ## <a href="Installation">Installation</a>
 ${data.installation}
