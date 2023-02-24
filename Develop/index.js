@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown');
+const markDown = require('./utils/generateMarkdown');
 
 //  array of questions for user input
 const questions = [
@@ -43,7 +43,7 @@ const questions = [
 		type: 'list',
 		name: 'license',
 		message: 'What type of license does the project use?',
-		choices: ['MIT', 'Apache 2.0', 'GPL 3.0', 'Other'],
+		choices: ['MIT', 'Apache', 'GPL v3', 'Other'],
 	},
 	{
 		type: 'input',
@@ -81,48 +81,8 @@ function writeToFile() {
 		.then((data) => {
 			const filename = 'README.md';
 
-			const content = `
-# ${data.title}
+			const content = markDown.generateMarkdown(data);
 
-## Description
-
-${data.description}
-
-## Table of Contents (Optional)
-
-
-${data.contents}
-
-## <a href="Installation">Installation</a>
-
-${data.installation}
-
-## <a href="Usage">Usage</a>
-
-${data.usage}
-
-## <a href="License">License</a>
-
-${data.license}
-
-## <a href="Contributing">Contributing</a>
-
-${data.contributing}
-
-## <a href="Tests">Tests</a>
-
-${data.tests}
-
-## <a href="Questions">Questions</a>
-
-${data.questions}
-### Use the following links to contact me
-
-[GitHub Profile](https://github.com/${data.GitHub}/).
-
-[:envelope_with_arrow:](${data.email}).
-
-`;
 			fs.writeFile(filename, content, (err) => {
 				if (err) {
 					console.error(err);
@@ -138,7 +98,7 @@ ${data.questions}
 
 // TODO: Create a function to initialize app
 function init() {
-	// writeToFile();
+	writeToFile();
 }
 
 // Function call to initialize app
